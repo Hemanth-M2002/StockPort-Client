@@ -1,14 +1,20 @@
 import { useState } from 'react'
 import { LineChart, TrendingUp, Lock, User } from 'lucide-react'
 import StockBackground from './StockBackground'
+import { useNavigate } from 'react-router-dom'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Login attempted with:', email, password)
+  }
+
+  const handleClick =(e)=>{
+    navigate('/dashboard')
   }
 
   return (
@@ -17,11 +23,11 @@ export default function LoginPage() {
       <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
       <div className="absolute top-0 left-0 w-full h-full">
         <img 
-          src="/placeholder.svg?height=1080&width=1920" 
+          src="https://shorturl.at/Nibjb" 
           alt="Stock market background" 
           layout="fill"
           objectFit="cover"
-          className="opacity-20"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
         />
       </div>
       <div className="w-full max-w-md relative z-10 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg">
@@ -68,6 +74,7 @@ export default function LoginPage() {
             <button 
               className="w-full p-3 bg-green-500 hover:bg-green-600 text-white rounded-md"
               type="submit"
+              onClick={handleClick}
             >
               Sign In
             </button>
@@ -82,20 +89,13 @@ export default function LoginPage() {
       <div className="hidden lg:block fixed bottom-4 left-4 right-4 z-20">
         <div className="flex justify-between items-center">
           <img 
-            src="/placeholder.svg?height=50&width=200" 
+            // src="https://shorturl.at/4KIlu" 
             alt="Stock market graph" 
             width={200} 
-            height={50} 
-            className="opacity-50"
+            height={50}
+            className="rounded-full opacity-50"
           />
           <TrendingUp className="h-8 w-8 text-green-400" />
-          <img 
-            src="/placeholder.svg?height=50&width=200" 
-            alt="Financial data" 
-            width={200} 
-            height={50} 
-            className="opacity-50"
-          />
         </div>
       </div>
     </div>
